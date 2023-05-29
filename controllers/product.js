@@ -1,0 +1,23 @@
+const Product = require("../models/product");
+exports.getproduct = async (req, res) => {
+  const allproduct = await Product.find();
+  res.status(200).json(allproduct);
+};
+exports.getdetailproduct = async (req, res) => {
+  try {
+    const idproduct = req.params["idproduct"];
+    const productitem = await Product.findById(idproduct);
+    const listproductcategory = await Product.find({
+      category: productitem.category,
+    });
+    const data = {
+      productitem: productitem,
+      listproductcategory: listproductcategory,
+    };
+    res.status(200).json(data);
+  } catch (error) {
+    console.log(error);
+  }
+
+  //   res.status(200).json(allproduct);
+};
