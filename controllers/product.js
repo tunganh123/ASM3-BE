@@ -16,6 +16,7 @@ exports.getdetailproduct = async (req, res) => {
     };
     res.status(200).json(data);
   } catch (error) {
+    res.status(400).json();
     console.log(error);
   }
 

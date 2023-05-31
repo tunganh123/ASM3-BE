@@ -9,7 +9,8 @@ const path = require("path");
 require("dotenv").config();
 const cors = require("cors");
 const corsoption = {
-  origin: [process.env.URL_USER, process.env.URL_ADMIN],
+  // origin: [process.env.URL_USER, process.env.URL_ADMIN],
+  origin: "*",
   credentials: true,
 };
 const mongoose = require("mongoose");
@@ -42,7 +43,8 @@ mongoose
     const server = app.listen(app.get("port"));
     const io = require("socket.io")(server, {
       cors: {
-        origin: [process.env.URL_USER, process.env.URL_ADMIN],
+        // origin: [process.env.URL_USER, process.env.URL_ADMIN],
+        origin: "*",
         methods: ["GET", "POST"],
       },
     });
