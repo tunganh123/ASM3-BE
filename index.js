@@ -44,8 +44,9 @@ mongoose
     const io = require("socket.io")(server, {
       cors: {
         // origin: [process.env.URL_USER, process.env.URL_ADMIN],
-        origin: "https://asm-3-user.vercel.app",
-        methods: ["GET", "POST"],
+        origin: "*",
+        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        credentials: false,
       },
     });
     // Connect
