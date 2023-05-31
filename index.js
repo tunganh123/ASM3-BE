@@ -10,7 +10,8 @@ require("dotenv").config();
 const cors = require("cors");
 const corsoption = {
   // origin: [process.env.URL_USER, process.env.URL_ADMIN],
-  origin: ["https://asm-3-user.vercel.app,"http://localhost:3000"]
+  //origin: ["https://asm-3-user.vercel.app,"http://localhost:3000"]
+  origin: "http://localhost:3000",
   credentials: true,
 };
 const mongoose = require("mongoose");
