@@ -10,8 +10,8 @@ require("dotenv").config();
 const cors = require("cors");
 const corsoption = {
   // origin: [process.env.URL_USER, process.env.URL_ADMIN],
-  origin: "*",
- // credentials: true,
+  origin: "http://localhost:3000",
+  credentials: true,
 };
 const mongoose = require("mongoose");
 const cookieparser = require("cookie-parser");
