@@ -11,7 +11,7 @@ const cors = require("cors");
 const corsoption = {
   // origin: [process.env.URL_USER, process.env.URL_ADMIN],
   origin: "*",
-  credentials: true,
+ // credentials: true,
 };
 const mongoose = require("mongoose");
 const cookieparser = require("cookie-parser");
