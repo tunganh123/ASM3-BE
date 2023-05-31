@@ -56,7 +56,7 @@ exports.login = async (req, res) => {
        path: "/",
       sameSite: "none",
      // secure: true,
-      httpOnly: true,
+     // httpOnly: true,
     });
     res.json({ token: token });
   } catch (error) {
