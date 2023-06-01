@@ -3,7 +3,7 @@ const router = express.Router();
 const ordercontroller = require("../controllers/order");
 const { authuser } = require("../middleware/authuser");
 // add product
-router.post("/addorder", ordercontroller.addorder);
+router.post("/addorder", authuser, ordercontroller.addorder);
 // get order
 router.post("/getorder", authuser, ordercontroller.getorder);
 // get detail order
