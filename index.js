@@ -14,6 +14,7 @@ const corsoption = {
   origin: "https://asm-3-user.vercel.app",
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
+  methods: ["GET", "PUT", "POST"],
 };
 const mongoose = require("mongoose");
 const cookieparser = require("cookie-parser");
