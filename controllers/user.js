@@ -54,9 +54,9 @@ exports.login = async (req, res) => {
     //create cookie in client
     res.cookie("token", token, {
       path: "/",
-      sameSite: "none",
-      // secure: true,
-      httpOnly: true,
+      httpOnly: false,
+      secure: false,
+      samesite: "none",
     });
     res.json({ token: token });
   } catch (error) {
