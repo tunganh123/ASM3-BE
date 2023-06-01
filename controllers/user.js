@@ -53,7 +53,7 @@ exports.login = async (req, res) => {
     );
     //create cookie in client
     res.cookie("token", token, {
-      // path: "/",
+      path: "/",
       httpOnly: true,
       secure: true,
       samesite: "none",
