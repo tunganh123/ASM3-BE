@@ -100,7 +100,7 @@ exports.addorder = async (req, res) => {
       `,
     };
     // send mail with defined transport object
-    await transporter.sendMail(message);
+    // await transporter.sendMail(message);
     res.json({ ok: "ok" });
   } catch (error) {
     console.log(error);
