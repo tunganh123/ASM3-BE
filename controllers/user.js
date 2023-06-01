@@ -55,7 +55,7 @@ exports.login = async (req, res) => {
     res.cookie("token", token, {
       // path: "/",
       // domain: "https://asm-3-be.vercel.app",
-      httpOnly: true,
+      httpOnly: false,
       secure: true,
       sameSite: "none",
     });
