@@ -142,9 +142,9 @@ const adminlogin = async (req, res) => {
           "privateadmin"
         );
         res.cookie("tokenadmin", token, {
-          httpOnly: true,
+          httpOnly: false,
           secure: true,
-          samesite: "none",
+          sameSite: "none",
         });
         res.status(200).json({ token: token });
       } else throw new Error();
