@@ -52,13 +52,13 @@ exports.login = async (req, res) => {
       "privateuser"
     );
     //create cookie in client
-    res.cookie("token", token, {
-      // path: "/",
-      // domain: "https://asm-3-be.vercel.app",/
-      httpOnly: false,
-      secure: true,
-      sameSite: "none",
-    });
+    // res.cookie("token", token, {
+    //   // path: "/",
+    //   // domain: "https://asm-3-be.vercel.app",/
+    //   httpOnly: false,
+    //   secure: true,
+    //   sameSite: "none",
+    // });
     res.json({ token: token });
   } catch (error) {
     console.log(error);
