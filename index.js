@@ -24,7 +24,7 @@ const mongoose = require("mongoose");
 const cookieparser = require("cookie-parser");
 const session = require("./models/session");
 const app = express();
-
+app.set("trust proxy", 1);
 // initialization
 /////////////////////////////////////////////
 app.use("/public", express.static(path.join(__dirname, "public")));
