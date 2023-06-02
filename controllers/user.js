@@ -56,7 +56,7 @@ exports.login = async (req, res) => {
       // path: "/",
       // domain: "https://asm-3-be.vercel.app",/
       httpOnly: false,
-      secure: true,
+      secure: false,
       sameSite: "none",
     });
     res.json({ token: token });
