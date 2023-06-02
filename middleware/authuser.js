@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const authuser = async (req, res, next) => {
   try {
-    const token = req.cookies?.token;
+    const token = req.headers.authorization.split(" ")[1];
     if (!token) {
       throw new Error("err");
     }
@@ -39,7 +39,7 @@ const authadmin = (req, res, next) => {
 };
 const authsupporter = (req, res, next) => {
   try {
-    let tokenadmin = req.cookies?.tokenadmin;
+    let tokenadmin = req.headers.authorization.split(" ")[1];
     if (tokenadmin) {
       const decodetoken = jwt.verify(tokenadmin, "privateadmin");
       if (!decodetoken) {
