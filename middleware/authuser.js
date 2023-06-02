@@ -17,7 +17,7 @@ const authuser = async (req, res, next) => {
 };
 const authadmin = (req, res, next) => {
   try {
-    let tokenadmin = req.cookies?.tokenadmin;
+    let tokenadmin = req.headers.authorization.split(" ")[1];
     if (tokenadmin) {
       const decoded = jwt.decode(tokenadmin);
       if (decoded.role != "supporter") {
