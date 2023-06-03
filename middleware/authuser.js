@@ -5,7 +5,6 @@ const authuser = async (req, res, next) => {
     if (!token) {
       throw new Error("err");
     }
-    console.log(token);
     const decodetoken = jwt.verify(token, "privateuser");
     if (!decodetoken) {
       throw new Error("err");

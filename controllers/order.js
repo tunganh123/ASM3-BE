@@ -28,12 +28,27 @@ exports.addorder = async (req, res) => {
     const orderitem = new Order(dataorder);
     // Cập nhật tồn cho Product
     const productArr = dataorder.products;
-    productArr.forEach(async (item) => {
-      const productitem = await Product.findById(item.product._id);
-      await Product.findByIdAndUpdate(item.product._id, {
-        count: productitem.count - item.count,
+    //Check card
+    let checkcount = false;
+    for (let index = 0; index < productArr.length; index++) {
+      const productitem = await Product.findById(productArr[index].product._id);
+      let newcount = productitem.count - productArr[index].count;
+      if (newcount < 0) {
+        checkcount = true;
+        break;
+      }
+    }
+    //update count
+    if (!checkcount) {
+      productArr.forEach(async (item) => {
+        const productitem = await Product.findById(item.product._id);
+        await Product.findByIdAndUpdate(item.product._id, {
+          count: productitem.count - item.count,
+        });
       });
-    });
+    } else {
+      throw new Error();
+    }
     // Save item
     const check = await orderitem.save();
     if (!check) {
@@ -78,7 +93,6 @@ exports.addorder = async (req, res) => {
               </tr>
               ${productArr
                 .map((item) => {
-                  console.log(item);
                   return `<tr>
                         <td>${item.product.name}</td>
                         <td><img src=${
@@ -104,7 +118,7 @@ exports.addorder = async (req, res) => {
     await transporter.sendMail(message);
     res.json({ ok: "ok" });
   } catch (error) {
-    console.log(error);
+    res.json({ err: "Số lượng đặt hàng quá so với hàng tồn" });
   }
 };
 exports.getorder = async (req, res) => {
