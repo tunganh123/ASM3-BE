@@ -20,8 +20,8 @@ exports.addorder = async (req, res) => {
       service: "gmail",
       host: "smtp.gmail.com",
       auth: {
-        user: "louistunganh1@gmail.com", // generated ethereal user
-        pass: "hhquqnyftmoxyzhk", // generated ethereal password
+        user: process.env.EMAIL_ID, // generated ethereal user
+        pass: process.env.PASSWORD, // generated ethereal password
       },
     });
     const dataorder = req.body;
