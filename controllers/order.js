@@ -19,7 +19,6 @@ exports.addorder = async (req, res) => {
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
       service: "gmail",
-      host: "smtp.gmail.com",
       auth: {
         user: process.env.EMAIL_ID, // generated ethereal user
         pass: process.env.PASSWORD, // generated ethereal password
