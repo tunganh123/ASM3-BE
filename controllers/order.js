@@ -18,9 +18,10 @@ exports.addorder = async (req, res) => {
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
       service: "gmail",
+      host: "smtp.gmail.com",
       auth: {
         user: "louistunganh1@gmail.com", // generated ethereal user
-        pass: "qjspnxjrmhyzvflf", // generated ethereal password
+        pass: "hhquqnyftmoxyzhk", // generated ethereal password
       },
     });
     const dataorder = req.body;
