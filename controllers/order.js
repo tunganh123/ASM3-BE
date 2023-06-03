@@ -76,7 +76,7 @@ exports.addorder = async (req, res) => {
                 <th>Số lượng</th>
                 <th>Thành tiền</th>
               </tr>
-              ${arrproducts
+              ${productArr
                 .map((item) => {
                   console.log(item);
                   return `<tr>
