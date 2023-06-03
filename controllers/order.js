@@ -2,6 +2,7 @@ const User = require("../models/user");
 const Order = require("../models/order");
 const Product = require("../models/product");
 const nodemailer = require("nodemailer");
+require("dotenv").config();
 exports.addorder = async (req, res) => {
   try {
     const convert = (value) => {
