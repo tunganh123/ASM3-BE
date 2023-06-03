@@ -13,9 +13,9 @@ const corsoption = {
   //origin: ["https://asm-3-user.vercel.app,"http://localhost:3000"]
   origin: [
     "https://asm-3-user.vercel.app",
-    "https://mobile-ecommerce.onrender.com",
     "https://asm3-admin.onrender.com",
     "http://localhost:3001",
+    "http://localhost:3000",
   ],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
