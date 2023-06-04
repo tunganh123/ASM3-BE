@@ -23,7 +23,6 @@ function fileFilter(req, file, cb) {
     cb(null, true);
   } else {
     cb(null, false);
-    return cb(new Error({ err: "Only .png, .jpg and .jpeg format allowed!" }));
   }
 }
 const upload = multer({
@@ -59,16 +58,28 @@ const addproduct = async (req, res) => {
   try {
     const data = req.body;
     const filesobj = req.files;
+    // if (filesobj.length > 4) {
+    //   throw new Error();
+    // }
     let objimg = {};
     let i = 1;
     filesobj.forEach((item) => {
       objimg[`img${i}`] = item.path;
       i++;
     });
+
     upload(req, res, function (err) {
-      if (err.err) {
-        throw new Error(err.err);
+      if (err instanceof multer.MulterError) {
+        // A Multer error occurred when uploading.
+        // throw new Error();
+        // console.log(err);
+      } else if (err) {
+        // throw new Error();
+        // An unknown error occurred when uploading.
       }
+      // if (err.err) {
+      //   throw new Error(err.err);
+      // }
     });
     const productitem = new Product({
       ...data,
@@ -82,8 +93,8 @@ const addproduct = async (req, res) => {
     }
     res.json({ a: "b" });
   } catch (error) {
-    console.log(error);
-    res.status(400).json({ err: "Vui lòng chọn đủ 4 ảnh" });
+    // console.log(error);
+    res.json({ err: "Vui lòng chọn đủ 4 ảnh" });
   }
 };
 const detailproduct = async (req, res) => {

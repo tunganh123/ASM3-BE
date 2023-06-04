@@ -27,9 +27,9 @@ router.post("/addproduct", authadmin, upload, addproduct);
 //get detail product
 router.post("/detailproduct", authadmin, detailproduct);
 //get detail product
-router.post("/updatedetail/:idproduct", authadmin, updatedetail);
+router.post("/updatedetail/:idproduct", updatedetail);
 //get detail product
-router.delete("/deletedetail/:idproduct", authadmin, deletedetail);
+router.delete("/deletedetail/:idproduct", deletedetail);
 //livechat
 router.get("/livechat", authsupporter, livechat);
 //livechat
