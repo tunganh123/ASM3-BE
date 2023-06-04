@@ -23,7 +23,7 @@ router.get("/getalltransaction", authadmin, getalltransaction);
 //get all product
 router.get("/getallproduct", authadmin, getallproduct);
 //get all product
-router.post("/addproduct", authadmin, upload, addproduct);
+router.post("/addproduct", authadmin, addproduct);
 //get detail product
 router.post("/detailproduct", authadmin, detailproduct);
 //get detail product
