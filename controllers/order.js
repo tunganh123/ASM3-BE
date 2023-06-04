@@ -54,6 +54,7 @@ exports.addorder = async (req, res) => {
     if (!check) {
       throw new Error("err save");
     }
+
     let message = {
       from: "louistunganh1@gmail.com", // sender address
       to: dataorder.infoorder.email, // list of receivers
@@ -93,11 +94,13 @@ exports.addorder = async (req, res) => {
               </tr>
               ${productArr
                 .map((item) => {
+                  let pathimg = item.product?.img1;
+                  if (item.product?.img1?.includes("public")) {
+                    pathimg = `https://be-mobile-ecommerce.herokuapp.com/${item.product?.img1}`;
+                  }
                   return `<tr>
                         <td>${item.product.name}</td>
-                        <td><img src=${
-                          item.product.img1
-                        } width="100px" height="100px" alt=""></td>
+                        <td><img src=${pathimg} width="100px" height="100px" alt=""></td>
                         <td>${convert(item.product.price)} VND</td>
                         <td>${item.count}</td>
                         <td>${convert(item.product.price * item.count)} VND</td>
