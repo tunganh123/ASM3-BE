@@ -81,7 +81,8 @@ const addproduct = async (req, res) => {
       }
       res.json({ a: "b" });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
+      res.json({ err: error });
     }
   });
 };
