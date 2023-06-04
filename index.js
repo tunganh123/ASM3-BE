@@ -33,7 +33,7 @@ app.set("port", process.env.PORT);
 // set cors
 app.use(cors(corsoption));
 // usebodyparser get json
-app.use(bodyparser.json({ limit: "50mb" }));
+app.use(bodyparser.json());
 //use cookie parser get cookie
 app.use(cookieparser());
 // router

@@ -29,7 +29,8 @@ function fileFilter(req, file, cb) {
 const upload = multer({
   storage: storage,
   fileFilter: fileFilter,
-}).array("img", 5);
+  // limits: { fileSize: 1024 * 1024 },
+}).array("img", 4);
 exports.upload = upload;
 
 const getalltransaction = async (req, res) => {
@@ -82,7 +83,7 @@ const addproduct = async (req, res) => {
     res.json({ a: "b" });
   } catch (error) {
     console.log(error);
-    res.status(400).json({ err: "Vui lòng chọn đủ 5 ảnh" });
+    res.status(400).json({ err: "Vui lòng chọn đủ 4 ảnh" });
   }
 };
 const detailproduct = async (req, res) => {
