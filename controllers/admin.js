@@ -59,7 +59,8 @@ const addproduct = async (req, res) => {
   upload(req, res, async (err) => {
     try {
       if (err) {
-        return res.json({ err: err });
+        throw new Error(err);
+        // return res.json({ err: err });
       }
       const data = req.body;
       const filesobj = req.files;
@@ -81,8 +82,8 @@ const addproduct = async (req, res) => {
       }
       res.json({ a: "b" });
     } catch (error) {
-      // console.log(error);
-      res.json({ err: error });
+      // console.log(error.message);
+      res.json({ err: error.message });
     }
   });
 };
