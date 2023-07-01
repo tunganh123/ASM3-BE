@@ -41,12 +41,13 @@ const upload = multer({
   fileFilter: fileFilter,
   // limits: { files: 4 },
 }).array("img", 4);
+
 const uploadimgchat = multer({
   storage: storagechat,
   fileFilter: fileFilter,
-  limits: { fileSize: 20 * 1024 * 1024 }, // Giới hạn dung lượng tệp là 20MB
+  // limits: { fileSize: 20 * 1024 * 1024 }, // Giới hạn dung lượng tệp là 20MB
 }).single("imgchat");
-// exports.upload = upload;
+exports.upload = upload;
 
 const getalltransaction = async (req, res) => {
   try {
@@ -85,6 +86,7 @@ const addproduct = async (req, res) => {
         objimg[`img${i}`] = item.path;
         i++;
       });
+
       const productitem = new Product({
         ...data,
         short_desc: data.shortdesc,
@@ -208,6 +210,7 @@ const saveimgchat = async (req, res) => {
       }
       res.json({ a: "b" });
     } catch (error) {
+      console.log(err);
       res.json({ err: error.message });
     }
   });
