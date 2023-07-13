@@ -123,7 +123,7 @@ exports.addorder = async (req, res) => {
   } catch (error) {
     if (error.mes) {
       res.json(error);
-    } else res.json();
+    } else res.json({ a: "v" });
   }
 };
 exports.getorder = async (req, res) => {
