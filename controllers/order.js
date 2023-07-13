@@ -1,4 +1,3 @@
-const User = require("../models/user");
 const Order = require("../models/order");
 const Product = require("../models/product");
 const nodemailer = require("nodemailer");
@@ -16,7 +15,7 @@ exports.addorder = async (req, res) => {
       let res = vl.slice(1).replace(/,/g, ".");
       return res;
     };
-    // create reusable transporter object using the default SMTP transport
+    //  create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -47,14 +46,13 @@ exports.addorder = async (req, res) => {
         });
       });
     } else {
-      throw new Error({ mes: "Số lượng đặt hàng quá so với hàng tồn" });
+      throw new Error("Số lượng đặt hàng quá so với hàng tồn");
     }
     // Save item
     const check = await orderitem.save();
     if (!check) {
       throw new Error("err save");
     }
-
     let message = {
       from: "louistunganh1@gmail.com", // sender address
       to: dataorder.infoorder.email, // list of receivers
@@ -121,8 +119,8 @@ exports.addorder = async (req, res) => {
     await transporter.sendMail(message);
     res.json({ ok: "ok" });
   } catch (error) {
-    if (error.mes) {
-      res.json(error);
+    if (error.message) {
+      res.json({ err: error.message });
     } else res.json({ a: "v" });
   }
 };
