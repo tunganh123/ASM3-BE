@@ -128,9 +128,7 @@ exports.addorder = async (req, res) => {
 exports.getorder = async (req, res) => {
   try {
     const iduser = req.body.iduser;
-    const arrorder = await getOrSetCache(iduser, async () => {
-      await Order.find({ useridorder: iduser });
-    });
+    const arrorder =await Order.findById(iduser)
     res.status(200).json(arrorder);
   } catch (error) {
     console.log(error);
