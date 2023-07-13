@@ -47,7 +47,7 @@ exports.addorder = async (req, res) => {
         });
       });
     } else {
-      throw new Error();
+      throw new Error({ mes: "Số lượng đặt hàng quá so với hàng tồn" });
     }
     // Save item
     const check = await orderitem.save();
@@ -121,7 +121,9 @@ exports.addorder = async (req, res) => {
     await transporter.sendMail(message);
     res.json({ ok: "ok" });
   } catch (error) {
-    res.json({ err: "Số lượng đặt hàng quá so với hàng tồn" });
+    if (error.mes) {
+      res.json(error);
+    } else res.json();
   }
 };
 exports.getorder = async (req, res) => {
